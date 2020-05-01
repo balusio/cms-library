@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
+import alias from '@rollup/plugin-alias'
 import babel from 'rollup-plugin-babel'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
@@ -8,6 +9,7 @@ import copy from 'rollup-plugin-copy'
 import path from 'path'
 import react from 'react'
 import reactDom from 'react-dom'
+
 export default {
   input: `${path.resolve()}/src/index.js`,
   output: {
@@ -24,6 +26,12 @@ export default {
         react: Object.keys(react),
         'react-dom': Object.keys(reactDom)
       }
+    }),
+    alias({
+      entries: [
+        { find: 'utils', replacement: '../src/utils' },
+        { find: '@lib', replacement: '../src/lib' }
+      ]
     }),
     serve({
       contentBase: 'demo',

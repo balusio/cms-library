@@ -1,6 +1,7 @@
 import React from 'react';
 import {createUseStyles} from 'react-jss'
 
+import Button from '@lib/button/button.com'
 const useStyles = createUseStyles({
   container: {
     width: '100%',
@@ -8,6 +9,7 @@ const useStyles = createUseStyles({
     padding: 0,
     margin: 0,
   },
+
 })
 
 export default function App () {
@@ -15,6 +17,12 @@ export default function App () {
   return (
     <div className={classes.container}>
       <h1></h1>
+      <Button styles={{
+        spacing: '20px',
+        labelColor: 'red',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+      }}/>
     </div>
   )
 }
